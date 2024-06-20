@@ -1,0 +1,24 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+<div class="container text-center pt-4">
+<h1>Login</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <div class="row gx-3">
+      <div class="col"><button type="submit" class="btn btn-primary">Login</button></div>
+      <div class="col"><a href="{% url 'reset_password' %}">Forgot password?</a></div>
+    </div>
+    
+  </form>
+</div>
+
+<div class="container text-center">
+
+</div>
+{% endblock content %}

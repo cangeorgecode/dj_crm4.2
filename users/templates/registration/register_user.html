@@ -1,0 +1,16 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+
+<div class="container text-center pt-4">
+    <h1>Register</h1>
+    {% if form.errors %}
+    <p>Error registering</p>
+    {% endif %}
+    <form method="POST" action="{% url 'register_user' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+{% endblock content %}
