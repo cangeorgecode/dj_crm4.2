@@ -1,0 +1,13 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container pt-4 text-center">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.email }}
+        {{ form.full_name }}
+
+        <button type="submit" class="btn btn-primary">Sign up!</button>
+      </form>
+</div>
+{% endblock content %}
