@@ -20,6 +20,7 @@ class Record(models.Model):
     email = models.EmailField(max_length=50, null=True, blank=True)
     phone = models.CharField(max_length=50, null=True, blank=True)
     category = models.CharField(max_length=50, choices=CHOICES, default="prospect", null=True, blank=True)
+    ratings = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return(f"{self.full_name}")

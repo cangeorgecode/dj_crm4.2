@@ -38,6 +38,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Category</th>
+                            <th>Ratings</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,13 @@
                             {% elif record.category == "customer" %}
                                 <td><span class="badge bg-danger">{{ record.category }}</span></td>
                             {% endif %}
+                            <td>                    
+                                <div class="card-body">
+                                    <div id="step" class="star-rating" style="width: 160px; height: 32px; background-size: 32px;">
+                                        <div class="star-value" style="background-size: 32px; width: {{ record.ratings }}%;"><small hidden>{{ record.ratings }}</small></div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         {% endfor %}
                        
@@ -66,6 +74,9 @@
     </section>
 </div>
 {% include 'crm/footer.html' %}
+<script src="{% static './assets/extensions/rater-js/index.js' %}"></script>
+<script src="{% static './assets/static/js/pages/rater-js.js' %}"></script>
+<script src="{% static './assets/compiled/js/app.js' %}"></script>
 
 </body>
 
