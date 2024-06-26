@@ -6,4 +6,5 @@ urlpatterns = [
     path('', include('crm.urls')),
     path('users/', include('users.urls')),
     path('landing/', include('landingpage.urls')),
+    path('mailing/', include('sendmail.urls')),
 ]
