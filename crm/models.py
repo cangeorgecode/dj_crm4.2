@@ -16,6 +16,7 @@ DEALS = (
     ('won', 'won'), 
     ('lost', 'lost'),
     ('wip', 'wip'),
+    ('interested', 'interested'),
 )
 
 class Record(models.Model):
@@ -44,7 +45,7 @@ class Todos(models.Model):
         return(f"{self.user_id}")
 
 class Interaction(models.Model):
-    interaction_date = models.DateField(auto_now_add=True)
+    interaction_date = models.DateField(null=True, blank=True)
     interaction_type = models.CharField(max_length=100, choices=INTERACTIONS, default="email")
     notes = models.CharField(max_length=255)
     follow_up = models.CharField(max_length=255)

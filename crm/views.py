@@ -1,11 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import Record
+from .models import Record, Interaction
 from .forms import AddRecordForm, AddInteractions
 from django.db.models import Sum
+from datetime import datetime, timedelta, date
+
+current_date = date.today()
+past_date = current_date - timedelta(days=7)
 
 def index(request):
     records = Record.objects.all()
-    return render(request, 'crm/index.html', {'records': records})
+    interactions = Interaction.objects.filter(interaction_date__range=(past_date, current_date))
+    return render(request, 'crm/index.html', {
+        'records': records,
+        'interactions': interactions,
+        })
 
 def account_profile(request):
     return render(request, 'crm/account-profile.html')

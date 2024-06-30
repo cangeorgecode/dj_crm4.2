@@ -11,9 +11,11 @@
 	[x] a field to record their interaction 
 	[x] and to give the lead a score
 
-### depending on the score, 
-	[] send an email to the lead or 
-	[] send a reminder to the owner to follow up
+### Based on one of the fields from the Record model, 
+	[] send bulk emails to the leads 
+
+### Calculate 7 days from the interaction_date,
+	[x] list todo in the dashboard, so sales colleague can see what needs to be done
 
 ### Add some form of reporting
     [x] create a bar chart for case won per month
