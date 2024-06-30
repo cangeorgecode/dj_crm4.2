@@ -4,10 +4,11 @@ from django import forms
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField()
+    territory = forms.CharField()
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username', 'email', 'territory', 'password1', 'password2')
     
     def __init__(self, *args, **kwargs):
         super(RegisterUserForm, self).__init__(*args, **kwargs)
@@ -21,6 +22,11 @@ class RegisterUserForm(UserCreationForm):
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['email'].help_text = ''
+
+        self.fields['territory'].label = ''
+        self.fields['territory'].widget.attrs['class'] = 'form-control'
+        self.fields['territory'].widget.attrs['placeholder'] = 'Territory'
+        self.fields['territory'].help_text = ''
 
         self.fields['password1'].label = ''
         self.fields['password1'].widget.attrs['class'] = 'form-control'

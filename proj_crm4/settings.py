@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crm',
     'users',
-    'landingpage',
-    'sendmail',
-    'drip',
+    'landingpage.apps.LandingpageConfig',
     'django_admin_filters',
 ]
 
@@ -128,7 +129,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'bobbyesaev@gmail.com' 
-# EMAIL_HOST_PASSWORD = 'ahqv zdwx nhcl xmun'
-EMAIL_HOST_PASSWORD = 'wkrp owdh mglz xqsb'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST') 
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWD') 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

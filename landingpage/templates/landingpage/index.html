@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 <div class="container pt-4 text-center">
+  <h3>Landing page</h3>
     <form method="POST">
         {% csrf_token %}
-        {{ form.email }}
-        {{ form.full_name }}
+        {{ form }}
 
         <button type="submit" class="btn btn-primary">Sign up!</button>
       </form>

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from crm.forms import AddRecordForm
+from .forms import AddLeadForm
 
 def index(request):
-    form = AddRecordForm(request.POST or None)
+    form = AddLeadForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('index')
