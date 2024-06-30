@@ -5,7 +5,7 @@ from django.forms import FileField, Form
 class AddRecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ('full_name', 'biz_name', 'address', 'email', 'phone', 'category')
+        fields = ('full_name', 'biz_name', 'address', 'email', 'phone', 'category', 'notes', 'deal', 'expected_revenue')
 
     def __init__(self, *args, **kwargs):
         super(AddRecordForm, self).__init__(*args, **kwargs)
@@ -39,6 +39,21 @@ class AddRecordForm(forms.ModelForm):
         self.fields['category'].widget.attrs['class'] = 'form-select'
         self.fields['category'].widget.attrs['placeholder'] = 'Category'
         self.fields['category'].help_text = ''
+
+        self.fields['deal'].label = 'Deals'
+        self.fields['deal'].widget.attrs['class'] = 'form-select'
+        self.fields['deal'].widget.attrs['placeholder'] = 'Deals'
+        self.fields['deal'].help_text = ''
+
+        self.fields['expected_revenue'].label = 'Expected Revenue'
+        self.fields['expected_revenue'].widget.attrs['class'] = 'form-control'
+        self.fields['expected_revenue'].widget.attrs['placeholder'] = 'Expected Revenue'
+        self.fields['expected_revenue'].help_text = ''
+
+        self.fields['notes'].label = 'Notes'
+        self.fields['notes'].widget.attrs['class'] = 'form-control'
+        self.fields['notes'].widget.attrs['placeholder'] = 'Notes'
+        self.fields['notes'].help_text = ''
    
 
 class UploadForm(Form):

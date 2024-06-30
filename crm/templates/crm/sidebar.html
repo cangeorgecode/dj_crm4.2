@@ -80,6 +80,17 @@
             </a>
         </li>  
 
+        {% if request.path == "/reporting/" %}
+        <li class="sidebar-item active">
+        {% else %}
+        <li class="sidebar-item ">
+        {% endif %}
+            <a href="{% url 'reporting' %}" class='sidebar-link'>
+                <i class="bi bi-stack"></i>
+                <span>Reports</span>
+            </a>
+        </li>  
+
     </ul>
 </div>
 </div>

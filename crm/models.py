@@ -12,6 +12,12 @@ INTERACTIONS = (
     ('meeting', 'meeting'),
 )
 
+DEALS = (
+    ('won', 'won'), 
+    ('lost', 'lost'),
+    ('wip', 'wip'),
+)
+
 class Record(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     full_name = models.CharField(max_length=50)
@@ -21,6 +27,10 @@ class Record(models.Model):
     phone = models.CharField(max_length=50, null=True, blank=True)
     category = models.CharField(max_length=50, choices=CHOICES, default="prospect", null=True, blank=True)
     ratings = models.IntegerField(null=True, blank=True)
+    notes = models.TextField(max_length=1000, null=True, blank=True)
+    deal = models.CharField(max_length=50, choices=DEALS, default="wip", null=True, blank=True)
+    deal_close_date = models.DateField(null=True, blank=True)
+    expected_revenue = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return(f"{self.full_name}")

@@ -8,10 +8,11 @@ class AccountInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Accounts'
 
-
-class CustomizedUserAdmin(UserAdmin):
-    inlines = (AccountInline, )
-    list_display = ["username", "email",]
+class UserAdmin(admin.ModelAdmin):
+    model = User
+    field = ["username", "first_name", "last_name", "email"]
+    inlines = [AccountInline]
+    list_display = ("username", "email")
 
 admin.site.unregister(User)
-admin.site.register(User, CustomizedUserAdmin)
+admin.site.register(User, UserAdmin)

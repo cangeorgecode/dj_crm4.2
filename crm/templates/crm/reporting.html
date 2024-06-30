@@ -1,0 +1,145 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+{% include 'crm/sidebar.html' %}
+            
+<div class="page-heading">
+    <h3>Profile Statistics</h3>
+</div> 
+<div class="page-content"> 
+    <section class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon purple mb-2">
+                                        <i class="iconly-boldShow"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Total Expected Revenue</h6>
+                                    <h6 class="font-extrabold mb-0">${{ total_revenue }}</h6>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card"> 
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon blue mb-2">
+                                        <i class="iconly-boldProfile"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Case Won</h6>
+                                    <h6 class="font-extrabold mb-0">{{ revenue_won_jan }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon green mb-2">
+                                        <i class="iconly-boldAdd-User"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Case Loss</h6>
+                                    <h6 class="font-extrabold mb-0">{{ case_loss }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                    <div class="stats-icon red mb-2">
+                                        <i class="iconly-boldBookmark"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Case in progress</h6>
+                                    <h6 class="font-extrabold mb-0">{{ case_wip }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Profile Visit</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-profile-visit">
+                                <div class="container pt-4 pb-4">
+                                    <canvas id="myChart" width="50" height="50"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+{% include 'crm/footer.html' %}
+        </div>
+    </div>
+    <script src="{% static './assets/extensions/rater-js/index.js' %}"></script>
+    <script src="{% static './assets/static/js/pages/rater-js.js' %}"></script>
+    <script src="{% static './assets/compiled/js/app.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Revenue per month',
+        data: [{{ revenue_won_jan }}, {{ revenue_won_feb }}, {{ revenue_won_mar }}, {{ revenue_won_apr }}, {{ revenue_won_may }}, {{ revenue_won_jun }}, {{ revenue_won_jul }}, {{ revenue_won_aug }}, {{ revenue_won_sep }}, {{ revenue_won_oct }}, {{ revenue_won_nov }}, {{ revenue_won_dec }}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  </script>
+    
+
+    
+<!-- Need: Apexcharts -->
+<script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+<script src="assets/static/js/pages/dashboard.js"></script>
+
+</body>
+
+{% endblock content %}
