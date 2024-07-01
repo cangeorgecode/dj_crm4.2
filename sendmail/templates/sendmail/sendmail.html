@@ -1,0 +1,27 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+<div class="container text-center pt-4">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Filter customer</label>
+          <select class="form-select" name="category">
+            <option selected>Select customers</option>
+            <option value="prospect">Prospect</option>
+            <option value="lead">Lead</option>
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email subject</label>
+            <input type="text" class="form-control" name="subject" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email body</label>
+            <input type="text" class="form-control" name="message" aria-describedby="emailHelp">
+          </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock content %}

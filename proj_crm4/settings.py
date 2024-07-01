@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'users',
     'landingpage.apps.LandingpageConfig',
     'django_admin_filters',
+    'sendmail',
 ]
 
 MIDDLEWARE = [

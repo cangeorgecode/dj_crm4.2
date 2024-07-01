@@ -4,6 +4,7 @@ CHOICES = (
     ('prospect', 'prospect'),
     ('lead', 'lead'),
     ('customer', 'customer'),
+    ('all', 'all'),
 )
 
 INTERACTIONS = (

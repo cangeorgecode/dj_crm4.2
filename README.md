@@ -12,7 +12,7 @@
 	[x] and to give the lead a score
 
 ### Based on one of the fields from the Record model, 
-	[] send bulk emails to the leads 
+	[x] send bulk emails to a selected group of leads
 
 ### Calculate 7 days from the interaction_date,
 	[x] list todo in the dashboard, so sales colleague can see what needs to be done
