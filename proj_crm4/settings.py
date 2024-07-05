@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'landingpage.apps.LandingpageConfig',
     'django_admin_filters',
     'sendmail',
+    'csvimport',
 ]
 
 MIDDLEWARE = [

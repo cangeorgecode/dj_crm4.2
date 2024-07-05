@@ -15,7 +15,7 @@ def login_user(request): # cannot be named login because we are importing it
             return redirect('index')
         else:
             messages.success(request, ('error logging in'))
-            return redirect('login')
+            return redirect('login_user')
     return render(request, 'registration/login.html', {})
 
 def logout_user(request):
@@ -53,7 +53,7 @@ def update_password(request):
                     messages.error(request, error)
         else:
             form = ChangePasswordForm(current_user)
-            return render(request, 'membership/update_password.html', {'form': form})
+            return render(request, 'users/update_password.html', {'form': form})
     else:
         return redirect('index') # If user is not logged in
     
@@ -69,4 +69,4 @@ def update_email(request):
                 return redirect('dashboard')
             else:
                 messages.success(request, 'We encountered an error')
-    return render(request, 'membership/update_email.html', {'form': form})
+    return render(request, 'users/update_email.html', {'form': form})

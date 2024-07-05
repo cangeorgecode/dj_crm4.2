@@ -1,5 +1,9 @@
 {% extends 'crm/base.html' %}
+{% load static %}
 {% block content %}
+{% include 'crm/sidebar.html' %}
+{% include 'crm/page-heading.html' %}
+
 <div class="container text-center pt-4">
     <form method="POST">
         {% csrf_token %}
@@ -24,4 +28,9 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </div>
+
+{% include 'crm/footer.html' %}
+<script src="{% static './assets/extensions/rater-js/index.js' %}"></script>
+<script src="{% static './assets/static/js/pages/rater-js.js' %}"></script>
+<script src="{% static './assets/compiled/js/app.js' %}"></script>
 {% endblock content %}
